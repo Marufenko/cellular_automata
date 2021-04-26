@@ -15,7 +15,7 @@ class CellularAutomata:
     def __init__(self, size: int, rule: int):
         self.size = size
         self.grid = np.zeros(shape=(self.size, self.size), dtype=int)
-        self.grip_size_index = size-1
+        self.grip_size_index = size - 1
         self.rule = get_bitfield(rule)
         self.iter_counter = 0
 
@@ -31,7 +31,7 @@ class CellularAutomata:
         index = int(f'{flip_bit(a)}{flip_bit(b)}{flip_bit(c)}', 2)
         return self.rule[index]
 
-    def calc_next_generation(self, index):
+    def get_next_generation(self, index):
         """ applies rule and updates index+1 `grid` with next generation
 
         :param index: `grid` index contains current generation
@@ -53,13 +53,13 @@ class CellularAutomata:
         index = self.iter_counter
 
         if index < self.grip_size_index:  # array is not yet filled
-            self.calc_next_generation(index)
+            self.get_next_generation(index)
 
         else:  # array full - time to swipe it down (up in visualized mode)
-            for line in range(1, self.grip_size_index+1):
-                self.grid[line-1] = self.grid[line]
+            for line in range(1, self.grip_size_index + 1):
+                self.grid[line - 1] = self.grid[line]
 
-            self.calc_next_generation(self.grip_size_index-1)  # next gen added in the end
+            self.get_next_generation(self.grip_size_index - 1)  # next gen added in the end
 
         self.iter_counter += 1
 
@@ -71,9 +71,9 @@ if __name__ == "__main__":
 
     fig, ax = plt.subplots(1, 1)
 
-    def animate(frame, object: CellularAutomata):
-        object.iterate()
-        data = np.flipud(object.grid)  # flip for more natural top-down visualization
+    def animate(frame, inst: CellularAutomata):
+        inst.iterate()
+        data = np.flipud(inst.grid)  # flip for more natural top-down visualization
         ax.clear()
         ax.set_axis_off()
 
