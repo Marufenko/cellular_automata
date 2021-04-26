@@ -98,7 +98,6 @@ if __name__ == "__main__":
             for i in range(size):
                 for j in range(size):
                     if ca.grid[i, j] == 1:
-                        print(ca.grid[i, j])
                         block = Surface(BLOCK)
                         block.fill(Color(BLOCK_COLOR))
                         screen.blit(block, (x_cor, y_cor))
