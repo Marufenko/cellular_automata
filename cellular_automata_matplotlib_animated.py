@@ -67,7 +67,7 @@ class CellularAutomata:
 if __name__ == "__main__":
     # SIZE: size of grid for visualization (recommended range 150-200 to balance visualization range VS performance)
     # RULE: int in range 0 - 255 which represents all possible binary state combinations
-    ca = CellularAutomata(size=150, rule=182)  # nice one - 30, 126, 150, 60, 182, 73, 255
+    ca = CellularAutomata(size=150, rule=182)  # nice one - 30, 126, 150, 60, 182, 73, 90
 
     fig, ax = plt.subplots(1, 1)
 
